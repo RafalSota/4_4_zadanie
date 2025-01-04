@@ -16,50 +16,63 @@ logging.basicConfig(level=logging.DEBUG, format='%(asctime)s %(message)s', filen
 def calculator():
     while True:
         print("Kalkulator. Podaj działanie, posługując się odpowiednią liczbą:\n1. Dodawanie\n2. Odejmowanie\n3. Mnożenie\n4. Dzielenie\n5. Wyjście z kalkulatora")
-        operation = int(input("Wybór: "))
-
+        operation = input("Wybór: ")
+        try:
+            operation = int(operation)
+        except ValueError:
+            logging.warning(f"WARNING Proba użycia '{operation}' jako liczby całkowitej")
         if operation == 1:
             while True:
-                a = input("Podaj składnik 1: ")
+                i = input("Ile liczb chcesz dodać? ")
                 try:
-                    a = float(a)
+                    i = int(i)
                     break
                 except ValueError:
-                    print("Podany składnik nie jest liczbą. Spórbuj jeszcze raz.")
-                    logging.warning(f"WARNING Proba użycia '{a}' jako liczby")
-            while True:
-                b = input("Podaj składnik 2: ")
-                try:
-                    b = float(b)
-                    break
-                except ValueError:
-                    print("Podany składnik nie jest liczbą. Spórbuj jeszcze raz.")
-                    logging.warning(f"WARNING Proba użycia '{b}' jako liczby")
-            result = a + b
-            print(f"Dodaję {a} i {b}")
+                    print("Błędna liczba. Spróbuj jeszcze raz. Podaj liczbę całkowitą ")
+                    logging.warning(f"WARNING Proba użycia '{a}' jako liczby całkowitej")
+            numbers = []
+            result = 0
+            info = ""
+            for i in range(0,i):
+                while True:
+                    number = input(f"Podaj składnik {i+1}: ")
+                    try:
+                        number = float(number)
+                        info += str(number) + " "
+                        result += number
+                        break
+                    except ValueError:
+                        print("Podany składnik nie jest liczbą. Spróbuj jeszcze raz.")
+                        logging.warning(f"WARNING Proba użycia '{number}' jako liczby")
+            print(f"Dodaję {info}")
             print(f"Wynik to: {result}\n")
-            logging.info(f"INFO Wybrano dodawanie. Dodaje {a} i {b}. Wynik to: {result}\n ")
+            logging.info(f"INFO Wybrano dodawanie. Dodaje {info}. Wynik to: {result}\n ")
         elif operation == 2:
             while True:
-                a = input("Podaj składnik 1: ")
+                i = input("Ile liczb chcesz odejmować? ")
                 try:
-                    a = float(a)
+                    i = int(i)
                     break
                 except ValueError:
-                    print("Podany składnik nie jest liczbą. Spórbuj jeszcze raz.")
-                    logging.warning(f"WARNING Proba użycia '{a}' jako liczby")
-            while True:
-                b = input("Podaj składnik 2: ")
-                try:
-                    b = float(b)
-                    break
-                except ValueError:
-                    print("Podany składnik nie jest liczbą. Spórbuj jeszcze raz.")
-                    logging.warning(f"WARNING Proba użycia '{b}' jako liczby")
-            result = a - b
-            print(f"Odejmuję {a} i {b}")
+                    print("Błędna liczba. Spróbuj jeszcze raz. Podaj liczbę całkowitą ")
+                    logging.warning(f"WARNING Proba użycia '{a}' jako liczby całkowitej")
+            numbers = []
+            result = 0
+            info = ""
+            for i in range(0,i):
+                while True:
+                    number = input(f"Podaj składnik {i+1}: ")
+                    try:
+                        number = float(number)
+                        info += str(number) + " "
+                        result += number
+                        break
+                    except ValueError:
+                        print("Podany składnik nie jest liczbą. Spróbuj jeszcze raz.")
+                        logging.warning(f"WARNING Proba użycia '{number}' jako liczby")
+            print(f"Odejmuję {info}")
             print(f"Wynik to: {result}\n")
-            logging.info(f"INFO Wybrano odejmowanie. Odejmuje {a} i {b}. Wynik to: {result}\n ")
+            logging.info(f"INFO Wybrano odejmowanie. Odejmuję {info}. Wynik to: {result}\n ")
         elif operation == 3:
             while True:
                 a = input("Podaj składnik 1: ")
