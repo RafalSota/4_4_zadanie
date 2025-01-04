@@ -4,6 +4,10 @@ Podaj składnik 1. 2.3
 Podaj składnik 2. 5.4
 Dodaję 2.30 i 5.40
 Wynik to 7.70
+
+Sprawdzaj, czy podana wartość na pewno jest liczbą.
+W wypadku mnożenia i dodawania daj użytkownikowi możliwość wpisania większej ilości argumentów 
+niż tylko dwa, np. możesz dodać do siebie trzy i więcej liczb.
 """
 
 import logging
@@ -15,34 +19,90 @@ def calculator():
         operation = int(input("Wybór: "))
 
         if operation == 1:
-            a = int(input("Podaj składnik 1: "))
-            b = int(input("Podaj składnik 2: "))
+            while True:
+                a = input("Podaj składnik 1: ")
+                try:
+                    a = float(a)
+                    break
+                except ValueError:
+                    print("Podany składnik nie jest liczbą. Spórbuj jeszcze raz.")
+                    logging.warning(f"WARNING Proba użycia '{a}' jako liczby")
+            while True:
+                b = input("Podaj składnik 2: ")
+                try:
+                    b = float(b)
+                    break
+                except ValueError:
+                    print("Podany składnik nie jest liczbą. Spórbuj jeszcze raz.")
+                    logging.warning(f"WARNING Proba użycia '{b}' jako liczby")
             result = a + b
             print(f"Dodaję {a} i {b}")
             print(f"Wynik to: {result}\n")
             logging.info(f"INFO Wybrano dodawanie. Dodaje {a} i {b}. Wynik to: {result}\n ")
         elif operation == 2:
-            a = int(input("Podaj składnik 1: "))
-            b = int(input("Podaj składnik 2: "))
+            while True:
+                a = input("Podaj składnik 1: ")
+                try:
+                    a = float(a)
+                    break
+                except ValueError:
+                    print("Podany składnik nie jest liczbą. Spórbuj jeszcze raz.")
+                    logging.warning(f"WARNING Proba użycia '{a}' jako liczby")
+            while True:
+                b = input("Podaj składnik 2: ")
+                try:
+                    b = float(b)
+                    break
+                except ValueError:
+                    print("Podany składnik nie jest liczbą. Spórbuj jeszcze raz.")
+                    logging.warning(f"WARNING Proba użycia '{b}' jako liczby")
             result = a - b
             print(f"Odejmuję {a} i {b}")
             print(f"Wynik to: {result}\n")
             logging.info(f"INFO Wybrano odejmowanie. Odejmuje {a} i {b}. Wynik to: {result}\n ")
         elif operation == 3:
-            a = int(input("Podaj składnik 1: "))
-            b = int(input("Podaj składnik 2: "))
+            while True:
+                a = input("Podaj składnik 1: ")
+                try:
+                    a = float(a)
+                    break
+                except ValueError:
+                    print("Podany składnik nie jest liczbą. Spórbuj jeszcze raz.")
+                    logging.warning(f"WARNING Proba użycia '{a}' jako liczby")
+            while True:
+                b = input("Podaj składnik 2: ")
+                try:
+                    b = float(b)
+                    break
+                except ValueError:
+                    print("Podany składnik nie jest liczbą. Spórbuj jeszcze raz.")
+                    logging.warning(f"WARNING Proba użycia '{b}' jako liczby")
             result = a * b
             print(f"Mnożę {a} i {b}")
             print(f"Wynik to: {result}\n")
-            logging.info(f"INFO Wybrano mnożenie. Mnoze {a} i {b}. Wynik to: {result}\n ")
+            logging.info(f"INFO Wybrano mnozenie. Mnoze {a} i {b}. Wynik to: {result}\n ")
         elif operation == 4:
-            a = int(input("Podaj składnik 1:: "))
-            b = int(input("Podaj składnik 2: "))
-            while b == 0:
-                print("Nie wolno dzielić przez 0!!!")
-                logging.warning(f"WARNING Proba dzielenia przez 0!")
-                b = int(input("Podaj jeszcze raz składnik 2: "))
-            result = round((a / b),12)
+            while True:
+                a = input("Podaj składnik 1: ")
+                try:
+                    a = float(a)
+                    break
+                except ValueError:
+                    print("Podany składnik nie jest liczbą. Spórbuj jeszcze raz.")
+                    logging.warning(f"WARNING Proba użycia '{a}' jako liczby")
+            while True:
+                b = input("Podaj składnik 2: ")
+                try:
+                    b = float(b)
+                    while b == 0:
+                        print("Nie wolno dzielić przez 0!!!")
+                        logging.warning(f"WARNING Proba dzielenia przez 0!")
+                        b = float(input("Podaj jeszcze raz składnik 2: "))
+                    break
+                except ValueError:
+                    print("Podany składnik nie jest liczbą. Spórbuj jeszcze raz.")
+                    logging.warning(f"WARNING Proba użycia '{b}' jako liczby")
+            result = a / b
             print(f"Dzielę {a} i {b}")
             print(f"Wynik to: {result}\n")
             logging.info(f"INFO Wybrano dzielenie. Dziele {a} i {b}. Wynik to: {result}\n ")
